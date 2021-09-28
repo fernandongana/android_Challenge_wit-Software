@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Tempo</string>
     <string name="details">Detalhes</string>
-    <string name="wind">Velocidade</string>
+    <string name="wind">Vento</string>
     <string name="humidity">Humidade</string>
     <string name="visibility">Visibilidade</string>
+    <string name="icon">Icone</string>
 </resources>
