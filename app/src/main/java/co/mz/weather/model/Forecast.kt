@@ -14,7 +14,7 @@ data class DayTemp(
 )
 
 data class TempForecast(
-    val day: String,
-    val min: String,
-    val max: String
+    val day: Double,
+    val min: Double,
+    val max: Double
 )

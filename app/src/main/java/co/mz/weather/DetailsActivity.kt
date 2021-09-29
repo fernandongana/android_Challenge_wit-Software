@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.mz.weather.adapter.ForeCastAdapter
 import co.mz.weather.databinding.ActivityDetailsBinding
-import co.mz.weather.di.iconsBaseUrl
+import co.mz.weather.di.*
 import co.mz.weather.model.Temp
 import co.mz.weather.viewmodel.WeatherViewModel
 import com.bumptech.glide.Glide
@@ -30,7 +30,6 @@ class DetailsActivity : AppCompatActivity() {
         binding = ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         title = "Detalhes"
-
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
@@ -43,14 +42,14 @@ class DetailsActivity : AppCompatActivity() {
     private fun bindTemp(temperature: Temp){
         val visibility = temperature.visibility / 1000
         binding.textViewDate.text = getDate(temperature.dt).toUpperCase()
-        binding.textViewTemp.text = temperature.main.temp + " \u2103"
-        binding.textViewMinTemp.text = temperature.main.temp_min + " \u00B0"
-        binding.textViewMaxTemp.text = temperature.main.temp_max + " \u00B0"
+        binding.textViewTemp.text = convertDoubletoInt(temperature.main.temp) + DegreesCelcius
+        binding.textViewMinTemp.text = convertDoubletoInt(temperature.main.temp_min) + Degrees
+        binding.textViewMaxTemp.text = convertDoubletoInt(temperature.main.temp_max) + Degrees
         binding.textViewTempDescription.text = temperature.weather[0].description
         binding.textViewLocation.text = temperature.name + ", "+temperature.sys.country
-        binding.textViewWind.text = temperature.wind.speed + " m/s"
-        binding.textViewHumidity.text = temperature.main.humidity + " %"
-        binding.textViewVisibility.text = visibility.toString() + " km"
+        binding.textViewWind.text = temperature.wind.speed + MeteresPerSecond
+        binding.textViewHumidity.text = temperature.main.humidity + Percentage
+        binding.textViewVisibility.text = visibility.toString() + Km
         Glide.with(this /* context */).load(iconsBaseUrl+temperature.weather[0].icon+".png").diskCacheStrategy(
             DiskCacheStrategy.ALL).into(binding.iconImage).waitForLayout()
     }

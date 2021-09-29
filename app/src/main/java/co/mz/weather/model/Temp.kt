@@ -17,10 +17,10 @@ data class Coord(
 )
 
 data class Main(
-    val temp: String,
-    val feels_like: String,
-    val temp_min: String,
-    val temp_max: String,
+    val temp: Double,
+    val feels_like: Double,
+    val temp_min: Double,
+    val temp_max: Double,
     val humidity: String,
 )
 

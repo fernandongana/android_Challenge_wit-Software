@@ -5,9 +5,7 @@ import android.content.ContentValues
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import co.mz.weather.di.API_KEY
-import co.mz.weather.di.MyApplication
-import co.mz.weather.di.RetroServiceInterface
+import co.mz.weather.di.*
 import co.mz.weather.model.Forecast
 import co.mz.weather.model.Temp
 import retrofit2.Call
@@ -39,14 +37,13 @@ class WeatherViewModel(application: Application) : AndroidViewModel(application)
     }
 
     fun getCurrentWeather(city: String) {
-        val call: Call<Temp>? = retroService.getCurrentWeather(city, "metric", "pt", API_KEY)
+        val call: Call<Temp>? = retroService.getCurrentWeather(city, Units, Lang, API_KEY)
 
         call?.enqueue(object : Callback<Temp> {
             override fun onResponse(call: Call<Temp>, response: Response<Temp>) {
                 if (response.isSuccessful) {
                     tempLiveData.postValue(response.body())
                 } else {
-                    Log.e(ContentValues.TAG, response.toString())
                     tempLiveData.postValue(null)
                 }
             }
@@ -58,21 +55,19 @@ class WeatherViewModel(application: Application) : AndroidViewModel(application)
     }
 
     fun getForecastWeather(lat: String, lon: String) {
-        val call: Call<Forecast>? = retroService.getForecastWeather(lat, lon, "metric", "pt", API_KEY)
+        val call: Call<Forecast>? = retroService.getForecastWeather(lat, lon, Units, Lang, API_KEY)
 
         call?.enqueue(object : Callback<Forecast> {
             override fun onResponse(call: Call<Forecast>, response: Response<Forecast>) {
                 if (response.isSuccessful) {
                     forecastLiveData.postValue(response.body())
                 } else {
-                    Log.e(ContentValues.TAG, response.toString())
                     forecastLiveData.postValue(null)
                 }
             }
 
             override fun onFailure(call: Call<Forecast>, t: Throwable) {
                 forecastLiveData.postValue(null)
-                Log.e(ContentValues.TAG, "Error : ${t.message}")
             }
         })
     }
