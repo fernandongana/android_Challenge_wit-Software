@@ -1,11 +1,9 @@
 package co.mz.weather.adapter
 
 import android.content.ContentValues
-import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import co.mz.weather.databinding.RecyclerViewDailyRowBinding
 import co.mz.weather.di.iconsBaseUrl
@@ -19,9 +17,7 @@ class ForeCastAdapter : RecyclerView.Adapter<ForeCastAdapter.ForeCastViewHolder>
 
     private var listForecast = mutableListOf<DayTemp>()
 
-    class ForeCastViewHolder(val binding : RecyclerViewDailyRowBinding) : RecyclerView.ViewHolder(binding.root){
-
-    }
+    class ForeCastViewHolder(val binding : RecyclerViewDailyRowBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ForeCastViewHolder {
         return ForeCastViewHolder(

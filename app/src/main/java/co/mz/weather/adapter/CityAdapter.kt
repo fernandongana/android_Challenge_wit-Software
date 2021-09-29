@@ -10,9 +10,7 @@ class CityAdapter(private val listener: (String) -> Unit): RecyclerView.Adapter<
 
     private var listCities = mutableListOf<City>()
 
-    class CityViewHolder(val binding : RecyclerViewCityRowBinding) : RecyclerView.ViewHolder(binding.root){
-
-    }
+    class CityViewHolder(val binding : RecyclerViewCityRowBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CityViewHolder {
         return CityViewHolder(RecyclerViewCityRowBinding.inflate(LayoutInflater.from(parent.context), parent,false))

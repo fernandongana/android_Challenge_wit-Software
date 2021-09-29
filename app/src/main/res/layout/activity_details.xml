@@ -78,7 +78,7 @@
                     android:id="@+id/textViewTempDescription"
                     android:layout_marginEnd="24dp"
                     android:fontFamily="@font/nunito_sans_semibold"
-                    android:textColor="@color/purple_200"
+                    android:textColor="@color/teal_700"
                     android:textSize="14sp"
                     android:layout_alignParentEnd="true"
                     android:layout_width="wrap_content"
