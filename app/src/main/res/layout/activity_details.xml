@@ -63,7 +63,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="14dp"
                     android:layout_marginEnd="5dp"
-                    android:drawableStart="@drawable/ic_arrow_down"
+                    app:drawableStartCompat="@drawable/ic_arrow_down"
                     android:fontFamily="@font/nunito_sans_semibold"
                     android:textSize="14sp" />
 
@@ -72,7 +72,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/textViewMinTemp"
-                    android:drawableStart="@drawable/ic_arrow_up"
+                    app:drawableStartCompat="@drawable/ic_arrow_up"
                     android:fontFamily="@font/nunito_sans_semibold"
                     android:textSize="14sp" />
 
@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="70dp"
-                android:drawableStart="@drawable/ic_location"
+                app:drawableStartCompat="@drawable/ic_location"
                 android:drawablePadding="5dp"
                 android:fontFamily="@font/nunito_sans_light_italic"
                 android:paddingBottom="10dp"
