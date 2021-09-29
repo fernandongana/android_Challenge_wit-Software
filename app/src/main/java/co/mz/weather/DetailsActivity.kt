@@ -85,7 +85,6 @@ class DetailsActivity : AppCompatActivity() {
             if(it != null){
                 binding.loading.visibility = View.GONE
                 binding.detailsLayout.visibility = View.VISIBLE
-                Log.e(ContentValues.TAG, "TimeZone : ${it.timezone}")
 
                 for (forecast in it.daily){
                     forecastAdapter.addForecast(forecast)
