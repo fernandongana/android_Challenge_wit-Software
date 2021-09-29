@@ -6,9 +6,9 @@ class Temp(
     val wind: Wind,
     val weather: List<Weather>,
     val name: String,
-    val dt: Int,
+    val dt: Long,
     val sys: Sys,
-    val visibility: Double
+    val visibility: Int
 )
 
 data class Coord(

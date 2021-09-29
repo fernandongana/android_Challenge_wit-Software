@@ -18,28 +18,28 @@ import javax.inject.Inject
 class WeatherViewModel(application: Application) : AndroidViewModel(application) {
 
     @Inject
-    lateinit var rService: RetroServiceInterface
+    lateinit var retroService: RetroServiceInterface
 
     private var tempLiveData: MutableLiveData<Temp>
-    private var forecatLiveData: MutableLiveData<Forecast>
+    private var forecastLiveData: MutableLiveData<Forecast>
 
 
     init {
         (application as MyApplication).getRetroComponent().inject(this)
         tempLiveData = MutableLiveData()
-        forecatLiveData = MutableLiveData()
+        forecastLiveData = MutableLiveData()
     }
 
     fun getTempLiveDataObserver(): MutableLiveData<Temp> {
         return tempLiveData
     }
 
-    fun getForecsatLiveDataObserver(): MutableLiveData<Forecast> {
-        return forecatLiveData
+    fun getForecastLiveDataObserver(): MutableLiveData<Forecast> {
+        return forecastLiveData
     }
 
     fun getCurrentWeather(city: String) {
-        val call: Call<Temp>? = rService.getCurrentWeather(city, "metric", "pt", API_KEY)
+        val call: Call<Temp>? = retroService.getCurrentWeather(city, "metric", "pt", API_KEY)
 
         call?.enqueue(object : Callback<Temp> {
             override fun onResponse(call: Call<Temp>, response: Response<Temp>) {
@@ -58,20 +58,20 @@ class WeatherViewModel(application: Application) : AndroidViewModel(application)
     }
 
     fun getForecastWeather(lat: String, lon: String) {
-        val call: Call<Forecast>? = rService.getForecastWeather(lat, lon, "metric", "pt", API_KEY)
+        val call: Call<Forecast>? = retroService.getForecastWeather(lat, lon, "metric", "pt", API_KEY)
 
         call?.enqueue(object : Callback<Forecast> {
             override fun onResponse(call: Call<Forecast>, response: Response<Forecast>) {
                 if (response.isSuccessful) {
-                    forecatLiveData.postValue(response.body())
+                    forecastLiveData.postValue(response.body())
                 } else {
                     Log.e(ContentValues.TAG, response.toString())
-                    forecatLiveData.postValue(null)
+                    forecastLiveData.postValue(null)
                 }
             }
 
             override fun onFailure(call: Call<Forecast>, t: Throwable) {
-                forecatLiveData.postValue(null)
+                forecastLiveData.postValue(null)
                 Log.e(ContentValues.TAG, "Error : ${t.message}")
             }
         })
