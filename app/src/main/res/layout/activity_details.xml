@@ -39,8 +39,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
-                    android:fontFamily="@font/nunito_sans_bold"
-                    android:textSize="22sp" />
+                    android:fontFamily="@font/nunito_sans"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/textViewTemp"

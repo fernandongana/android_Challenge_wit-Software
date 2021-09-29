@@ -34,14 +34,14 @@ class ForeCastAdapter : RecyclerView.Adapter<ForeCastAdapter.ForeCastViewHolder>
 
         holder.binding.textViewMinTemp.text = listForecast[position].temp.min
         holder.binding.textViewMaxTemp.text = listForecast[position].temp.max
-        holder.binding.textViewDate.text = date
+        holder.binding.textViewDate.text = date.toUpperCase()
         Log.e(ContentValues.TAG, "Image : ${listForecast[position].weather[0].icon}")
         Glide.with(holder.itemView.context).load(iconsBaseUrl +listForecast[position].weather[0].icon+".png").diskCacheStrategy(
             DiskCacheStrategy.ALL).into(holder.binding.iconImage).waitForLayout()
     }
 
     private fun getDayOfWeek(timestamp: Long): String {
-        return SimpleDateFormat("EEEE", Locale.forLanguageTag("pt")).format(timestamp * 1000)
+        return SimpleDateFormat("EEE, MMM d", Locale.forLanguageTag("pt")).format(timestamp * 1000)
     }
 
     override fun getItemCount(): Int {

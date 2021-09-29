@@ -42,7 +42,7 @@ class DetailsActivity : AppCompatActivity() {
 
     private fun bindTemp(temperature: Temp){
         val visibility = temperature.visibility / 1000
-        binding.textViewDate.text = getDayOfWeek(temperature.dt)
+        binding.textViewDate.text = getDate(temperature.dt).toUpperCase()
         binding.textViewTemp.text = temperature.main.temp + " \u2103"
         binding.textViewMinTemp.text = temperature.main.temp_min + " \u00B0"
         binding.textViewMaxTemp.text = temperature.main.temp_max + " \u00B0"
@@ -55,8 +55,8 @@ class DetailsActivity : AppCompatActivity() {
             DiskCacheStrategy.ALL).into(binding.iconImage).waitForLayout()
     }
 
-    private fun getDayOfWeek(timestamp: Long): String {
-        return SimpleDateFormat("EEEE", Locale.forLanguageTag("pt")).format(timestamp * 1000)
+    private fun getDate(timestamp: Long): String {
+        return SimpleDateFormat("EEEE, d MMM, yy", Locale.forLanguageTag("pt")).format(timestamp * 1000)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
