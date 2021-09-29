@@ -47,7 +47,6 @@ class MainActivity : AppCompatActivity() {
                 for (city in it){
                     cityAdapter.addCity(city)
                     Log.e(ContentValues.TAG, "City : ${city.name}")
-                   // cityAdapter.notifyDataSetChanged()
                 }
             }
         })

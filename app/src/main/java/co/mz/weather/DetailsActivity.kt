@@ -1,12 +1,16 @@
 package co.mz.weather
 
+import android.content.ContentValues
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import co.mz.weather.adapter.ForeCastAdapter
 import co.mz.weather.databinding.ActivityDetailsBinding
 import co.mz.weather.di.iconsBaseUrl
 import co.mz.weather.model.Temp
@@ -17,6 +21,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 class DetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailsBinding
     private lateinit var weatherViewModel: WeatherViewModel
+    private var forecastAdapter = ForeCastAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,21 +33,21 @@ class DetailsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
         binding.detailsLayout.visibility = View.GONE
-
+        initForecastRecyclerView()
         val city = intent.getStringExtra("city").toString()
         initViewModel(city)
     }
 
-    private fun bind(temp: Temp){
-        binding.textViewTemp.text = temp.main.temp + " \u2103"
-        binding.textViewMinTemp.text = temp.main.temp_min + " \u00B0"
-        binding.textViewMaxTemp.text = temp.main.temp_max + " \u00B0"
-        binding.textViewTempDescription.text = temp.weather[0].main
-        binding.textViewLocation.text = temp.name + ", "+temp.sys.country
-        binding.textViewWind.text = temp.wind.speed + " m/s"
-        binding.textViewHumidity.text = temp.main.humidity + " %"
-        binding.textViewVisibility.text = temp.visibility.toString()
-        Glide.with(this /* context */).load(iconsBaseUrl+temp.weather[0].icon+".png").diskCacheStrategy(
+    private fun bindTemp(temperature: Temp){
+        binding.textViewTemp.text = temperature.main.temp + " \u2103"
+        binding.textViewMinTemp.text = temperature.main.temp_min + " \u00B0"
+        binding.textViewMaxTemp.text = temperature.main.temp_max + " \u00B0"
+        binding.textViewTempDescription.text = temperature.weather[0].description
+        binding.textViewLocation.text = temperature.name + ", "+temperature.sys.country
+        binding.textViewWind.text = temperature.wind.speed + " m/s"
+        binding.textViewHumidity.text = temperature.main.humidity + " %"
+        binding.textViewVisibility.text = temperature.visibility.toString()
+        Glide.with(this /* context */).load(iconsBaseUrl+temperature.weather[0].icon+".png").diskCacheStrategy(
             DiskCacheStrategy.ALL).into(binding.iconImage).waitForLayout()
     }
 
@@ -62,16 +67,41 @@ class DetailsActivity : AppCompatActivity() {
 
     private fun initViewModel(city: String){
         weatherViewModel = ViewModelProvider(this).get(WeatherViewModel::class.java)
-        weatherViewModel.makeApiCall(city)
-        weatherViewModel.getLiveDataObserver().observe(this,{
+        weatherViewModel.getCurrentWeather(city)
+        weatherViewModel.getTempLiveDataObserver().observe(this,{
+            if(it != null){
+                bindTemp(it)
+                initForecast(it.coord.lat, it.coord.lon)
+                Log.e(ContentValues.TAG, "lat : ${it.coord.lat}")
+            }else{
+                Toast.makeText(this, "Erro ao carregar os dados", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun initForecast(lat: String, lon:String){
+        weatherViewModel.getForecastWeather(lat, lon)
+        weatherViewModel.getForecsatLiveDataObserver().observe(this,{
             if(it != null){
                 binding.loading.visibility = View.GONE
                 binding.detailsLayout.visibility = View.VISIBLE
-                bind(it)
+                Log.e(ContentValues.TAG, "TimeZone : ${it.timezone}")
+
+                for (forecast in it.daily){
+                    forecastAdapter.addForecast(forecast)
+                    Log.e(ContentValues.TAG, "forecast day: ${forecast.temp.day}")
+                }
             }else{
                 binding.loading.visibility = View.VISIBLE
                 Toast.makeText(this, "Erro ao carregar os dados", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    private fun initForecastRecyclerView(){
+        val layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.recyclerViewForecast.adapter = forecastAdapter
+        binding.recyclerViewForecast.layoutManager = layoutManager
     }
 }
