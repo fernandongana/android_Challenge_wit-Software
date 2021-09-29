@@ -12,14 +12,14 @@
         android:elevation="10dp"
         app:cardCornerRadius="10dp">
 
-    <TextView
-        android:id="@+id/textViewCity"
-        android:fontFamily="@font/nunito_sans"
-        android:layout_gravity="center"
-        android:textSize="18sp"
-        android:padding="12dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/textViewCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/nunito_sans"
+            android:padding="12dp"
+            android:textSize="18sp" />
     </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

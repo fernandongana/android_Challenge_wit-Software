@@ -12,13 +12,13 @@ class RetroModule {
 
     @Singleton
     @Provides
-    fun getRetrofitInterface(retrofit: Retrofit): RetroServiceInterface{
+    fun getRetrofitInterface(retrofit: Retrofit): RetroServiceInterface {
         return retrofit.create(RetroServiceInterface::class.java)
     }
 
     @Singleton
     @Provides
-    fun getRetrofitInstance() : Retrofit{
+    fun getRetrofitInstance(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())

@@ -15,7 +15,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
-class WeatherViewModel(application: Application): AndroidViewModel(application){
+class WeatherViewModel(application: Application) : AndroidViewModel(application) {
 
     @Inject
     lateinit var rService: RetroServiceInterface
@@ -30,44 +30,46 @@ class WeatherViewModel(application: Application): AndroidViewModel(application){
         forecatLiveData = MutableLiveData()
     }
 
-    fun getTempLiveDataObserver(): MutableLiveData<Temp>{
+    fun getTempLiveDataObserver(): MutableLiveData<Temp> {
         return tempLiveData
     }
 
-    fun getForecsatLiveDataObserver(): MutableLiveData<Forecast>{
+    fun getForecsatLiveDataObserver(): MutableLiveData<Forecast> {
         return forecatLiveData
     }
 
-    fun getCurrentWeather(city: String){
-        val call: Call<Temp>? = rService.getCurrentWeather(city, "metric","pt",API_KEY)
+    fun getCurrentWeather(city: String) {
+        val call: Call<Temp>? = rService.getCurrentWeather(city, "metric", "pt", API_KEY)
 
-        call?.enqueue(object : Callback<Temp>{
+        call?.enqueue(object : Callback<Temp> {
             override fun onResponse(call: Call<Temp>, response: Response<Temp>) {
-                if(response.isSuccessful){
+                if (response.isSuccessful) {
                     tempLiveData.postValue(response.body())
-                }else{
+                } else {
                     Log.e(ContentValues.TAG, response.toString())
                     tempLiveData.postValue(null)
                 }
             }
+
             override fun onFailure(call: Call<Temp>, t: Throwable) {
                 tempLiveData.postValue(null)
             }
         })
     }
 
-    fun getForecastWeather(lat: String, lon: String){
-        val call: Call<Forecast>? = rService.getForecastWeather(lat, lon,"metric","pt",API_KEY)
+    fun getForecastWeather(lat: String, lon: String) {
+        val call: Call<Forecast>? = rService.getForecastWeather(lat, lon, "metric", "pt", API_KEY)
 
-        call?.enqueue(object : Callback<Forecast>{
+        call?.enqueue(object : Callback<Forecast> {
             override fun onResponse(call: Call<Forecast>, response: Response<Forecast>) {
-                if(response.isSuccessful){
+                if (response.isSuccessful) {
                     forecatLiveData.postValue(response.body())
-                }else{
+                } else {
                     Log.e(ContentValues.TAG, response.toString())
                     forecatLiveData.postValue(null)
                 }
             }
+
             override fun onFailure(call: Call<Forecast>, t: Throwable) {
                 forecatLiveData.postValue(null)
                 Log.e(ContentValues.TAG, "Error : ${t.message}")

@@ -1,22 +1,22 @@
 package co.mz.weather.model
 
-class Temp (
+class Temp(
     val coord: Coord,
     val main: Main,
     val wind: Wind,
     val weather: List<Weather>,
     val name: String,
     val dt: Int,
-    val sys : Sys,
+    val sys: Sys,
     val visibility: Double
-    )
+)
 
 data class Coord(
     val lat: String,
     val lon: String
 )
 
-data class Main (
+data class Main(
     val temp: String,
     val feels_like: String,
     val temp_min: String,
@@ -24,21 +24,21 @@ data class Main (
     val humidity: String,
 )
 
-data class Sys (
+data class Sys(
     val country: String,
 )
 
-data class Weather (
+data class Weather(
     val main: String,
     val description: String,
     val icon: String
 )
 
-data class Wind (
+data class Wind(
     val speed: String
 )
 
-data class City (
+data class City(
     val name: String,
 )
 

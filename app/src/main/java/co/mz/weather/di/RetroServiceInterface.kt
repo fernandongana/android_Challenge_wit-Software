@@ -9,12 +9,16 @@ import retrofit2.http.Query
 interface RetroServiceInterface {
 
     @GET("weather")
-    fun getCurrentWeather(@Query(value = "q")query: String, @Query(value = "units")units:String,
-                          @Query(value = "lang")lang:String,
-                          @Query(value = "APPID")appId: String): Call<Temp>?
+    fun getCurrentWeather(
+        @Query(value = "q") query: String, @Query(value = "units") units: String,
+        @Query(value = "lang") lang: String,
+        @Query(value = "APPID") appId: String
+    ): Call<Temp>?
 
     @GET("onecall")
-    fun getForecastWeather(@Query(value = "lat")lat: String, @Query(value = "lon")lon: String,
-                           @Query(value = "units")units:String, @Query(value = "lang")lang:String,
-                           @Query(value = "APPID")appId: String): Call<Forecast>?
+    fun getForecastWeather(
+        @Query(value = "lat") lat: String, @Query(value = "lon") lon: String,
+        @Query(value = "units") units: String, @Query(value = "lang") lang: String,
+        @Query(value = "APPID") appId: String
+    ): Call<Forecast>?
 }

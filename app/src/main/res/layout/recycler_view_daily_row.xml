@@ -6,41 +6,41 @@
 
     <TextView
         android:id="@+id/textViewDate"
-        android:textColor="@color/white"
-        android:layout_marginStart="14dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:layout_marginStart="14dp"
         android:layout_marginEnd="5dp"
         android:fontFamily="@font/nunito_sans_bold"
-        android:textSize="18sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 
     <ImageView
-        android:contentDescription="@string/icon"
         android:id="@+id/iconImage"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="10dp"
-        android:layout_width="40dp"
-        android:layout_height="30dp"/>
+        android:contentDescription="@string/icon" />
 
     <TextView
         android:id="@+id/textViewMinTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_toLeftOf="@+id/textViewMaxTemp"
         android:fontFamily="@font/nunito_sans_semibold"
         android:textColor="@color/white"
-        android:textSize="14sp"
-        android:layout_toLeftOf="@+id/textViewMaxTemp"
-        android:layout_marginEnd="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/textViewMaxTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/nunito_sans_semibold"
         android:textColor="@color/white"
-        android:textSize="14sp"
-        android:layout_marginEnd="8dp"
-        android:layout_alignParentEnd="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:textSize="14sp" />
 
 </RelativeLayout>

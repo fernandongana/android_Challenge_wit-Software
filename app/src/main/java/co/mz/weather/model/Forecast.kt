@@ -1,9 +1,9 @@
 package co.mz.weather.model
 
-data class Forecast (
+data class Forecast(
     val timezone: String,
     val daily: List<DayTemp>,
-    )
+)
 
 data class DayTemp(
     val dt: Long,

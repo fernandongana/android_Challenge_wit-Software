@@ -9,17 +9,18 @@
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/loading"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:indeterminate="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:indeterminate="true" />
+
     <LinearLayout
         android:id="@+id/detailsLayout"
-        android:orientation="vertical"
-        android:padding="14dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="14dp">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -33,177 +34,188 @@
 
                 <TextView
                     android:id="@+id/textViewTemp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
                     android:layout_marginStart="14dp"
                     android:fontFamily="@font/nunito_sans_extrabold"
-                    android:textSize="44sp"
-                    android:layout_alignParentStart="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:textSize="44sp" />
 
                 <ImageView
-                    android:contentDescription="@string/icon"
                     android:id="@+id/iconImage"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="10dp"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"/>
+                    android:contentDescription="@string/icon" />
             </RelativeLayout>
 
             <RelativeLayout
-                android:layout_marginTop="50dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
                 android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/textViewMinTemp"
-                    android:drawableStart="@drawable/ic_arrow_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
                     android:layout_marginStart="14dp"
                     android:layout_marginEnd="5dp"
-                    android:layout_alignParentStart="true"
+                    android:drawableStart="@drawable/ic_arrow_down"
                     android:fontFamily="@font/nunito_sans_semibold"
-                    android:textSize="14sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/textViewMaxTemp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/textViewMinTemp"
                     android:drawableStart="@drawable/ic_arrow_up"
                     android:fontFamily="@font/nunito_sans_semibold"
-                    android:textSize="14sp"
-                    android:layout_width="wrap_content"
-                    android:layout_toRightOf="@+id/textViewMinTemp"
-                    android:layout_height="wrap_content"/>
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/textViewTempDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginEnd="24dp"
                     android:fontFamily="@font/nunito_sans_semibold"
                     android:textColor="@color/teal_700"
-                    android:textSize="14sp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:textSize="14sp" />
             </RelativeLayout>
 
-        <TextView
-            android:id="@+id/text_view_location"
-            android:drawableStart="@drawable/ic_location"
-            android:fontFamily="@font/nunito_sans_light_italic"
-            android:drawablePadding="5dp"
-            android:layout_width="match_parent"
-            android:textSize="22sp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
-            android:paddingBottom="10dp"
-            android:layout_marginStart="14dp"/>
+            <TextView
+                android:id="@+id/text_view_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="70dp"
+                android:drawableStart="@drawable/ic_location"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/nunito_sans_light_italic"
+                android:paddingBottom="10dp"
+                android:textSize="22sp" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            app:cardBackgroundColor="@color/blue"
             android:layout_height="60dp"
+            android:layout_marginTop="10dp"
             android:elevation="2dp"
+            app:cardBackgroundColor="@color/blue"
             app:cardCornerRadius="10dp">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:orientation="horizontal">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:padding="12dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
                     <TextView
-                        android:text="@string/wind"
-                        android:gravity="center"
-                        android:fontFamily="@font/nunito_sans"
-                        android:textColor="@color/white"
-                        android:textSize="12sp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_sans"
+                        android:gravity="center"
+                        android:text="@string/wind"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
                     <TextView
                         android:id="@+id/textViewWind"
-                        android:gravity="center"
-                        android:fontFamily="@font/nunito_sans_bold"
-                        android:textColor="@color/white"
-                        android:textSize="18sp"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/nunito_sans_bold"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
                 </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:padding="12dp"
-                android:orientation="vertical">
-                <TextView
-                    android:text="@string/humidity"
-                    android:fontFamily="@font/nunito_sans"
-                    android:textColor="@color/white"
-                    android:gravity="center"
-                    android:textSize="12sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/textViewHumidity"
-                    android:fontFamily="@font/nunito_sans_bold"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="12dp"
-                android:layout_alignParentEnd="true"
-                android:orientation="vertical">
-                <TextView
-                    android:text="@string/visibility"
-                    android:fontFamily="@font/nunito_sans"
-                    android:textColor="@color/white"
-                    android:gravity="center"
-                    android:textSize="12sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/textViewVisibility"
-                    android:fontFamily="@font/nunito_sans_bold"
-                    android:textColor="@color/white"
-                    android:gravity="center"
-                    android:textSize="18sp"
-                    android:layout_gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-            </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_sans"
+                        android:gravity="center"
+                        android:text="@string/humidity"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/textViewHumidity"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/nunito_sans_bold"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_sans"
+                        android:gravity="center"
+                        android:text="@string/visibility"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/textViewVisibility"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/nunito_sans_bold"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+                </LinearLayout>
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        app:cardBackgroundColor="@color/blue"
-        android:layout_height="wrap_content"
-        android:elevation="2dp"
-        app:cardCornerRadius="10dp">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_forecast"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:clipToPadding="false"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginBottom="8dp"
-            tools:listitem="@layout/recycler_view_daily_row"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-    </androidx.cardview.widget.CardView>
+            android:layout_marginTop="10dp"
+            android:elevation="2dp"
+            app:cardBackgroundColor="@color/blue"
+            app:cardCornerRadius="10dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_forecast"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:clipToPadding="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/recycler_view_daily_row" />
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
 
 </RelativeLayout>
